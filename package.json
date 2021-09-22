@@ -26,7 +26,8 @@
   "scripts": {
     "dev": "npm run build -- --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "release": "bumpp --commit --push --tag && npm publish"
+    "release": "bumpp --commit --push --tag && npm publish",
+    "test": "jest"
   },
   "dependencies": {
     "ramda": "^0.27.1"
