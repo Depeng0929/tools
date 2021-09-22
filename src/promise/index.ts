@@ -2,6 +2,8 @@
  *  时间切片,generator实现
  * @param fn generator function
  */
+import { Fn } from '../types'
+
 export function timeSliceByGenerator(fn: GeneratorFunction) {
   let iterator: Generator | null = null
   if (typeof fn === 'function') iterator = fn()
@@ -21,13 +23,6 @@ export function timeSliceByGenerator(fn: GeneratorFunction) {
   }
 }
 
-export function timeSlice(fn: () => any) {
-  const step = () => {
-    fn()
-  }
-  window.requestIdleCallback(step)
-}
-
 /**
  * 延迟渲染
  * @param fn 返回一个自增的数字 () => { ++i }
@@ -42,4 +37,13 @@ export function deferRender(fn: () => number, count: number) {
     })
   }
   return step()
+}
+
+export function sleep(ms: number, callback?: Fn) {
+  return new Promise<void>((resolve) => {
+    setTimeout(async() => {
+      await callback?.()
+      resolve()
+    }, ms)
+  })
 }

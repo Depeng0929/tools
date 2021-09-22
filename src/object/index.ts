@@ -52,4 +52,9 @@ export function hasOwnProperty<T>(obj: T, v: PropertyKey) {
   return Object.prototype.hasOwnProperty.call(obj, v)
 }
 
+export function getSingleInstance<T = any>(fn: (...p: any[]) => T) {
+  let instance: T
+  return (...args: any[]) => instance || (instance = fn(args))
+}
+
 export * from './clone'

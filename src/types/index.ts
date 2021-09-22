@@ -14,3 +14,16 @@ export type DeepMerge<F, S> = MergeInsertions<{
         ? F[K]
         : never;
 }>
+
+export type ReturnType<T> = T extends ((...args: any[]) => infer P) ? P : never
+
+export type DeepPartial<T> = {
+  [U in keyof T]: T[U] extends object
+    ? DeepPartial<T[U]>
+    : T[U]
+}
+
+export type Intersection<T extends object, U extends object> = Pick<
+T,
+Extract<keyof T, keyof U> & Extract<keyof U, keyof T>
+>
