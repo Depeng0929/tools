@@ -19,4 +19,4 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npx conventional-github-releaser -p angular
         env:
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{secrets.NPM_TOKEN}}
