@@ -47,3 +47,22 @@ export function sleep(ms: number, callback?: Fn) {
     }, ms)
   })
 }
+
+export async function asyncPool<T = number>(max: number, array: T[], excuteFn: (i: T, l: T[]) => Promise<any>) {
+  const list = []
+  const excutingList: Promise<any> [] = []
+
+  for (const item of array) {
+    const p = Promise.resolve().then(() => excuteFn(item, array))
+    list.push(p)
+
+    if (max < array.length) {
+      const e: Promise<any> = p.then(() => excutingList.splice(excutingList.indexOf(e), 1))
+      excutingList.push(e)
+      if (excutingList.length > max)
+        await Promise.race(excutingList)
+    }
+  }
+
+  return Promise.all(list)
+}
