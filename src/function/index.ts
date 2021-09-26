@@ -2,7 +2,6 @@
  * console.log
  * @param val {unknow} val need console.log
  */
-import * as timers from 'timers'
 import { Fn } from '../types'
 
 export function debug(val: unknown) {
