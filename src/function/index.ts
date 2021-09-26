@@ -2,13 +2,8 @@
  * console.log
  * @param val {unknow} val need console.log
  */
+import { processIsBrowser } from '../base/environment'
 import { Fn } from '../types'
-
-export function debug(val: unknown) {
-  // eslint-disable-next-line no-console
-  console.log.call(val, `timeStamp is ${window.performance.now()}`)
-  return val
-}
 
 export function tap<T>(callback: (...p: any[]) => T) {
   const val = callback()
@@ -17,7 +12,7 @@ export function tap<T>(callback: (...p: any[]) => T) {
 }
 
 /**
- * assert
+ * assert(boolean, message)
  * @param condition {boolean}
  * @param message {string} error message
  */
@@ -27,6 +22,16 @@ export const assert = (condition: boolean, message = 'assert error') => {
     console.error(message)
     throw new Error(message)
   }
+}
+
+/**
+ * like console.log
+ */
+export function debug(val: unknown) {
+  assert(processIsBrowser(), 'Current environment is browser')
+  // eslint-disable-next-line no-console
+  console.log.call(globalThis, val, `timeStamp is ${window.performance.now()}`)
+  return val
 }
 
 export function debonce(fn: Fn, delay = 500) {
