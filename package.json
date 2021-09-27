@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "npm run build -- --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "release": "bumpp --commit --push --tag && npm publish --access public --no-git-checks",
+    "release": "npm run build && bumpp --commit --push --tag && npm publish --access public --no-git-checks",
     "test": "jest"
   },
   "dependencies": {
