@@ -2,6 +2,7 @@
  * console.log
  * @param val {unknow} val need console.log
  */
+import _debug from 'debug'
 import { processIsBrowser } from '../base/environment'
 import { Fn } from '../types'
 
@@ -27,10 +28,10 @@ export const assert = (condition: boolean, message = 'assert error') => {
 /**
  * like console.log
  */
-export function debug(val: unknown) {
-  assert(processIsBrowser(), 'Current environment is browser')
+export function debug(val: unknown, namespace = 'lib') {
   // eslint-disable-next-line no-console
-  console.log.call(globalThis, val, `timeStamp is ${window.performance.now()}`)
+  const _debugger = _debug(`dp:${namespace}`)
+  _debugger(val)
   return val
 }
 
