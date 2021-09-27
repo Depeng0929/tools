@@ -3,7 +3,6 @@
  * @param val {unknow} val need console.log
  */
 import _debug from 'debug'
-import { processIsBrowser } from '../base/environment'
 import { Fn } from '../types'
 
 export function tap<T>(callback: (...p: any[]) => T) {
