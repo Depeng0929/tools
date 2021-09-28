@@ -7,6 +7,7 @@
   "rules": {
     "no-new-func": "off",
     "no-eval": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "prefer-spread": "off"
   }
 }
