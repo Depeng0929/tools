@@ -29,6 +29,14 @@
     "release": "npm run build && bumpp --commit --push --tag && npm publish --access public --no-git-checks",
     "test": "jest"
   },
+  "peerDependencies": {
+    "ramda": "^0.27.1"
+  },
+  "peerDependenciesMeta": {
+    "ramda": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "debug": "^4.3.2",
     "ramda": "^0.27.1"
