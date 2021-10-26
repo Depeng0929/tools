@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "debug": "^4.3.2",
+    "mathjs": "^9.5.1",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
