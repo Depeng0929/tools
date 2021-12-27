@@ -22,7 +22,7 @@ function cloneOtherType(v: any) {
     return v
 }
 
-export function deepClone<T extends object>(target: T, map: WeakMap<T, T> = new WeakMap()): T {
+export function deepClone(target: unknown, map = new WeakMap()) {
   if (isObject(target)) {
     let clone: any = Array.isArray(target) ? [] : {}
 
