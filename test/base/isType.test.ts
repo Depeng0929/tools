@@ -1,5 +1,4 @@
-import { isNil } from 'ramda'
-import { isDate, isFunction, isNull, isNumber, isPlainObject, isRegExp, isString, isUndefined } from '../../src'
+import { isDate, isFunction, isNull, isNil, isNumber, isPlainObject, isRegExp, isString, isUndefined } from '../../src'
 
 describe('isType', () => {
   it('isPlainObject', () => {
