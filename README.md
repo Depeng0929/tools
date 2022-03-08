@@ -6,81 +6,104 @@ Opinionated collection of common JavaScript / TypeScript utils by [Depeng0929](h
 
 
 
-## Base
+## Is
+包括常用的数据类型判断。
 
-* `processIsNode`: 当前环境是否是Node
-* `processIsBrowser`: 当前环境是否是游览器
-* `isNumber`, `isStringNumber`, `isString`,`isPlainObject`,`isDate`,`isSet`, `isMap`
-* `isNull`, `isUndefined`---`isNil`,`notNil`
-* `getUrlParams`:获取URL参数
-* `getHost`:当前域名
+```js
+import {
+  isRegExp,
+  isFunction,
+  isString,
+  isNumber,
+  isObject,
+  isDate,
+  isSymbol,
+  isSet,
+  isMap,
+  isNull,
+  isUndefined,
+} from '@depng9527/tools'
+```
 
+* `isNil`: 是否是`undefined`或`null`
+* `notNil`: 与`isNill`相反
+* `isBrowser`：是否在游览器中
 
+## String
 
-## Array
+* `ensurePrefix`
 
-* `range`:自动生成数组
-* `uniq`: 数组去重
-* `sum`: 数组相加
-
-
-
-## Node
-
-* `isPortFree`: 当前端口是否空闲
-* `findFreePort`: 返回可用端口
-
-
-
-## Date
-
-* `formatTime`:格式化日期
-
-
-
-## Function
-
-* `tap`:打印函数结果
-* `assert`: 断言
-* `debug`: console.log
-* `debonce`,`throttle`
-
+* `ensureSuffix`
 
 
 ## Math
 
-* `toFixed`: 浮点数
-* `baseConvert`: 进制转换
-* `add`,`subtract`,`multiply`,`divide`
+常用的数学运算
+```js
+import {
+  add, divide, subtract, multiply 
+} from '@depng9527/tools'
+```
 
+* `sum`: 求数组的和
+* `clamp`: `clamp(n, min, max)`返回n到min,max之间最近的点
 
+## Array
+
+* `range`
+
+* `uniq`
+
+* `at`
+
+* `last`
+
+* `first`
+
+* `remove`
+
+* `move`
 
 ## Object
 
-* `isObject`: 判断是否是对象和数组
-* `objectMap(obj, (key, value)=>[keyEnrich,valueEnrich])`: 过滤和map对象的key,value
-* `deepMerge`
-* `hasOwnProperty`
-* `getSingleInstance`:单例模式
 * `deepClone`
 
+* `deepMerge`
+
+* `objectMap`
+
+```js
+// { b: 2 }
+objectMap({ a: 1, b: 2 }, (k, v) => k === 'a' ? undefined : [k, v])
+```
 
 
-## Promise
+## Function
+* `tap`: 通常执行一些副作用
 
-* `timeSliceByGenerator`:时间切片
-* `deferRender`: 延迟渲染
-* `sleep`:
-* `asyncPool`: 请求池
+```js
+  function createUser(name: string): User {
+    return tap(new User, user => {
+      user.name = name
+    })
+  }
+```
+
+* `assert`: 断言
+
+* `debug`: debug
+
+## Vendor
+
+* `throttle`
+
+* `debounce`
 
 
+## time
+* `formateTime`
 
+* `relativeTime`
 
-
-
-
-## Other
-
-* `debugFirstPaint`: 首屏时间
-* `findValueByKey`:
-
+## pLimit
+* `p`

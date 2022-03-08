@@ -1,9 +1,5 @@
 {
-  "env": {
-    "jest": true
-  },
   "extends": ["@depeng9527/eslint-config"],
-  "plugins": ["jest"],
   "rules": {
     "no-new-func": "off",
     "no-eval": "off",
