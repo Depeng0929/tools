@@ -19,7 +19,7 @@
   "keywords": [
     "tools"
   ],
-  "types": "index.d.ts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "*.d.ts"
