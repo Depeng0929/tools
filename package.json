@@ -1,6 +1,6 @@
 {
   "name": "@depeng9527/tools",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Personal tools",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -36,7 +36,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build": "rollup -c",
-    "release": "npm run build && bumpp --commit --push --tag && npm publish --access public --no-git-checks"
+    "ci:publish": "npm run build && zx ./scripts/release.mjs"
   },
   "devDependencies": {
     "@depeng9527/eslint-config": "^1.4.0",
@@ -55,7 +55,8 @@
     "rollup-plugin-esbuild": "^4.8.2",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
-    "vitest": "^0.6.0"
+    "vitest": "^0.6.0",
+    "zx": "^5.2.0"
   },
   "dependencies": {
     "big.js": "^6.1.1",
