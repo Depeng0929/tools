@@ -19,5 +19,9 @@ jobs:
       - run: npm i -g yarn
       - run: yarn install
       - run: yarn build
-      - run: yarn ci:publish
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+         token: ${{ secrets.NPM_TOKEN }}
+         access: "public"
+         "check-version": false
       
