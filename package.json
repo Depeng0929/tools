@@ -1,6 +1,6 @@
 {
   "name": "@depeng9527/tools",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Personal tools",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
