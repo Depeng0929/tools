@@ -19,6 +19,6 @@ jobs:
       - run: npm i -g yarn
       - run: yarn install
       - run: yarn build
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       
