@@ -24,6 +24,13 @@
     "dist",
     "*.d.ts"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "npm run test",
     "test": "vitest",
