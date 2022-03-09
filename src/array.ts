@@ -1,3 +1,4 @@
+import { Nullable, Arrayable } from './types'
 /**
  * Genrate a range array of numbers. The `stop` is exclusive
  */
@@ -29,6 +30,13 @@ export function uniq<T>(array: readonly T[]): T[] {
   return Array.from(new Set(array))
 }
 
+export function toArray<T>(array?: Nullable<Arrayable<T>>): Array<T> {
+  array = array || []
+  if (Array.isArray(array))
+    return array
+  return [array]
+}
+
 /**
  * Get nth item of Array. Negative for backward
  */
@@ -56,9 +64,9 @@ export function last<T>(array: readonly []): T | undefined {
 /**
  * Get First item of Array
  */
-export function first(array: readonly []): undefined
-export function first<T>(array: readonly []): T
-export function first<T>(array: readonly []): T | undefined {
+export function head(array: readonly []): undefined
+export function head<T>(array: readonly []): T
+export function head<T>(array: readonly []): T | undefined {
   return at(array, 0)
 }
 

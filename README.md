@@ -58,11 +58,12 @@ import {
 
 * `last`
 
-* `first`
+* `head`
 
 * `remove`
 
 * `move`
+*  `toArray`
 
 ## Object
 

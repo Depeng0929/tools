@@ -1,3 +1,5 @@
+export type Arrayable<T> = T | Array<T>
+export type Nullable<T> = T | null | undefined
 
 export type numberLike = string | number
 export type Fn<T = void> = () => T
