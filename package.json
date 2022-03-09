@@ -36,7 +36,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build": "rollup -c",
-    "ci:publish": "npm run build && zx ./scripts/release.mjs"
+    "release": "zx ./scripts/release.mjs",
+    "ci:publish": "npm run build && zx ./scripts/publish.mjs"
   },
   "devDependencies": {
     "@depeng9527/eslint-config": "^1.4.0",
