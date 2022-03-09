@@ -2,7 +2,7 @@
   "name": "@depeng9527/tools",
   "version": "2.1.6",
   "description": "Personal tools",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "funding": "https://github.com/sponsors/Depeng0929",
   "author": "Depeng0929 <15365182986@163.com>",
@@ -19,7 +19,7 @@
   "keywords": [
     "tools"
   ],
-  "types": "./dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "*.d.ts"
@@ -28,7 +28,7 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
-      "types": "./index.d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
