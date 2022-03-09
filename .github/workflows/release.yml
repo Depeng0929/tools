@@ -17,11 +17,9 @@ jobs:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
 
-      - name: Setup
-        uses: Borales/actions-yarn@v2.3.0
-
-      - run: yarn install
-      - run: yarn build
-      - run: yarn ci:publish
+      - name: Publish to NPM
+        run: npm install
+        run: npm build
+        run: npm ci:publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
