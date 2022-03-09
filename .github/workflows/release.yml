@@ -19,7 +19,5 @@ jobs:
       - run: npm i -g yarn
       - run: yarn install
       - run: yarn build
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-         token: ${{ secrets.NPM_TOKEN }}
+      - run: yarn ci:publish
       
