@@ -30,7 +30,7 @@ export default [
     input,
     output: [
       {
-        file: input.replace('src/', 'dist/').replace('.ts', '.mjs'),
+        file: input.replace('src/', 'dist/').replace('.ts', '.js'),
         format: 'esm',
       },
       {
