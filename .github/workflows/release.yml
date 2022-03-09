@@ -16,10 +16,9 @@ jobs:
         with:
           node-version: '16'
           registry-url: https://registry.npmjs.org/
-
-      - name: Publish to NPM
-        - run: npm install
-        - run: npm build
-        - run: npm ci:publish
+      - run: npm i -g yarn
+      - run: yarn install
+      - run: yarn build
+      - run: yarn ci:publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
