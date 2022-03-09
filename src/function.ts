@@ -1,3 +1,4 @@
+import _debug from 'debug'
 
 /**
  * Pass the value through the callback, and return the value
@@ -32,6 +33,7 @@ export const assert = (condition: boolean, message = 'assert error') => {
   */
 export function debug(val: unknown, namespace = 'lib') {
   // eslint-disable-next-line no-console
-  console.log(val, namespace)
+  const _debugger = _debug(`dp:${namespace}`)
+  _debugger(val)
   return val
 }
