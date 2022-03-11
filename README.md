@@ -100,6 +100,8 @@ objectMap({ a: 1, b: 2 }, (k, v) => k === 'a' ? undefined : [k, v])
 
 * `debounce`
 
+* `findValueByKey`
+
 
 ## time
 * `formateTime`

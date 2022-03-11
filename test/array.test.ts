@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { uniq, range, at, remove, move } from '../src/index'
+import { uniq, range, at, remove, move, findValueByKey } from '../src/index'
 
 describe('array', () => {
   it('uniq', () => {
@@ -30,5 +30,14 @@ describe('array', () => {
   it('move', () => {
     const arr = [1, 3, 4, 5]
     expect(move(arr, 1, 3)).toEqual([1, 4, 5, 3])
+  })
+
+  it('findValueByKey', () => {
+    const arr = [{ name: 'k', age: 12 }, { name: 'kdp', age: 13 }]
+    const arr2: Array<{name: string; age: number}> = []
+    const find = findValueByKey('name', 'age')
+    expect(find('k', arr)).toBe(12)
+    expect(find('c', arr)).toBeUndefined()
+    expect(find('c', arr2)).toBeUndefined()
   })
 })

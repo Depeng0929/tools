@@ -1,4 +1,5 @@
-import { clone, equals } from 'rambda'
+// @ts-nocheck
+import { clone, equals, pipe, find, propEq, prop, curry } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -11,4 +12,11 @@ export function equal(a: unknown, b: unknown) {
     return numberLikeEqual(a, b)
 
   return equals(a, b)
+}
+
+export function findValueByKey<T extends object>(keyName: keyof T, valueName: keyof T) {
+  return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
+    find(propEq(keyName, key)),
+    prop(valueName),
+  )(list)
 }
