@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { clone, equals, pipe, find, propEq, prop } from 'rambda'
+import { clone, equals, pipe, find, propEq, prop, RisEmpty } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -19,4 +19,8 @@ export function findValueByKey<T extends object>(keyName: keyof T, valueName: ke
     find(propEq(keyName, key)),
     prop(valueName),
   )(list)
+}
+
+export function isEmpty(val: unknown) {
+  return RisEmpty(val)
 }
