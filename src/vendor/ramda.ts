@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { clone, equals, pipe, find, propEq, prop, RisEmpty } from 'rambda'
+import { clone, equals, pipe, find, propEq, prop, isEmpty as RisEmpty } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
