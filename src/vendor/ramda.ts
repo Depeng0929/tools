@@ -1,5 +1,4 @@
-// @ts-nocheck
-import { clone, equals, pipe, find, propEq, prop, RisEmpty } from 'rambda'
+import { clone, equals, pipe, find, propEq, prop, RisEmpty, map, pick } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -14,6 +13,7 @@ export function equal(a: unknown, b: unknown) {
   return equals(a, b)
 }
 
+// @ts-ignore
 export function findValueByKey<T extends object>(keyName: keyof T, valueName: keyof T) {
   return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
     find(propEq(keyName, key)),
@@ -23,4 +23,8 @@ export function findValueByKey<T extends object>(keyName: keyof T, valueName: ke
 
 export function isEmpty(val: unknown) {
   return RisEmpty(val)
+}
+
+export function select<T extends object, U extends keyof T>(keys: Array<U>, arr: T[]) {
+  return map(pick(keys), arr)
 }

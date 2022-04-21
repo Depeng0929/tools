@@ -104,6 +104,9 @@ objectMap({ a: 1, b: 2 }, (k, v) => k === 'a' ? undefined : [k, v])
 
 * `isEmpty`
 
+* `select`: like sql
+
+
 
 ## time
 * `formateTime`
