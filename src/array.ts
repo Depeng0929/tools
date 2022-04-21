@@ -30,7 +30,7 @@ export function uniq<T>(array: readonly T[]): T[] {
   return Array.from(new Set(array))
 }
 
-export function toArray<T>(array?: Nullable<Arrayable<T>>): Array<T> {
+export function toArray<T = unknown>(array?: Nullable<Arrayable<T>>): Array<T> {
   array = array || []
   if (Array.isArray(array))
     return array
