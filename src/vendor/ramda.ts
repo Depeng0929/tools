@@ -1,4 +1,4 @@
-import { clone, equals, pipe, find, propEq, prop, map, pick, isEmpty as RisEmpty } from 'rambda'
+import { clone, equals, pipe, find, propEq, prop, map, pick as Rpick, isEmpty as RisEmpty } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -28,5 +28,7 @@ export function isEmpty(val: unknown) {
 }
 
 export function select<T extends object, U extends keyof T>(keys: Array<U>, arr: T[]) {
-  return map(pick(keys), arr)
+  return map(Rpick(keys), arr)
 }
+
+export const pick = Rpick

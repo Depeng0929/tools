@@ -1,4 +1,4 @@
-import _debug from 'debug'
+import { isObject, isString } from './is'
 
 /**
  * Pass the value through the callback, and return the value
@@ -31,9 +31,16 @@ export const assert = (condition: boolean, message = 'assert error') => {
 /**
   * like console.log
   */
-export function debug(val: unknown, namespace = 'lib') {
-  // eslint-disable-next-line no-console
-  const _debugger = _debug(`dp:${namespace}`)
-  _debugger(val)
-  return val
+export function debug(val: unknown) {
+  if (Array.isArray(val))
+    console.table(val)
+
+  else if (isObject(val))
+    console.dir(val)
+
+  else if (isString(val))
+    console.log(`%c ${val}`, 'color: green; font-weight: normal')
+
+  else
+    console.trace(val)
 }

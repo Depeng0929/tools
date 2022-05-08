@@ -96,6 +96,21 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
   }
 }
 
+/**
+ * Utility for managing multiple promises.
+ *
+ * @category Promise
+ * @example
+ * ```
+ *
+ * const items = [1, 2, 3, 4, 5]
+ *
+ * await p(items)
+ *   .map(async i => await multiply(i, 3))
+ *   .filter(async i => await isEven(i))
+ * // [6, 12]
+ * ```
+ */
 export function p<T = any>(items?: Iterable<T>, options?: POptions): PInstance<T> {
   return new PInstance(items, options)
 }
