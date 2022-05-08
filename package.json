@@ -2,24 +2,16 @@
   "name": "@depeng9527/tools",
   "version": "2.2.4",
   "description": "Personal tools",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "funding": "https://github.com/sponsors/Depeng0929",
-  "author": "Depeng0929 <15365182986@163.com>",
+  "keywords": [
+    "tools"
+  ],
   "license": "MIT",
-  "sideEffects": false,
-  "bugs": {
-    "url": "https://github.com/Depeng0929/tools/issues"
-  },
-  "homepage": "https://github.com/Depeng0929/tools#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Depeng0929/tools.git"
   },
-  "keywords": [
-    "tools"
-  ],
-  "types": "dist/index.d.ts",
+  "funding": "https://github.com/sponsors/Depeng0929",
+  "author": "Depeng0929 <15365182986@163.com>",
   "files": [
     "dist",
     "*.d.ts"
@@ -31,6 +23,14 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
+  "bugs": {
+    "url": "https://github.com/Depeng0929/tools/issues"
+  },
+  "homepage": "https://github.com/Depeng0929/tools#readme",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "npm run test",
     "test": "vitest",
@@ -38,6 +38,14 @@
     "build": "rollup -c",
     "release": "zx ./scripts/release.mjs",
     "ci:publish": "npm run build && zx ./scripts/publish.mjs"
+  },
+  "dependencies": {
+    "big.js": "^6.1.1",
+    "dayjs": "^1.10.8",
+    "debug": "^4.3.3",
+    "p-limit": "^4.0.0",
+    "rambda": "^7.0.3",
+    "throttle-debounce": "^3.0.1"
   },
   "devDependencies": {
     "@depeng9527/eslint-config": "^1.4.0",
@@ -58,13 +66,5 @@
     "vite": "^2.8.0",
     "vitest": "^0.6.0",
     "zx": "^5.2.0"
-  },
-  "dependencies": {
-    "big.js": "^6.1.1",
-    "dayjs": "^1.10.8",
-    "debug": "^4.3.3",
-    "p-limit": "^4.0.0",
-    "rambda": "^7.0.3",
-    "throttle-debounce": "^3.0.1"
   }
 }
