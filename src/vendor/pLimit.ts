@@ -100,6 +100,7 @@ class PInstance<T = any> extends Promise<Awaited<T>[]> {
  * Utility for managing multiple promises.
  *
  * @category Promise
+ * @note please use babel for /node_modules\/(?!p-queue)/
  * @example
  * ```
  *
