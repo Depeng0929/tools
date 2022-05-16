@@ -34,6 +34,19 @@ export function equal(a: unknown, b: unknown) {
   return equals(a, b)
 }
 
+// TODO: type
+/**
+ * find value by key
+ *
+ * @category Array
+ * @example
+ * ```
+ * const arr = [{ name: 'k', age: 12 }, { name: 'kdp', age: 13 }]
+ *
+ * const find = findValueByKey('name', 'age')
+ * find('kdp', arr)     // 13
+ * ```
+ */
 export function findValueByKey<T extends object>(keyName: keyof T, valueName: keyof T) {
   // @ts-ignorer
   return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
