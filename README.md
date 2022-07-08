@@ -35,6 +35,10 @@ import {
 
 * `ensureSuffix`
 
+* `randomStr`
+
+* `pascalCase`,`camelCase`,`kebabCase`, `capitalize`
+
 
 ## Math
 
