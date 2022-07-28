@@ -77,6 +77,8 @@ import {
 
 * `objectMap`
 
+* `renameKeys`
+
 ```js
 // { b: 2 }
 objectMap({ a: 1, b: 2 }, (k, v) => k === 'a' ? undefined : [k, v])
