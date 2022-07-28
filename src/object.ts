@@ -74,3 +74,34 @@ export function deepMerge<T extends object = object, S extends object = T>(targe
     return isObject(item) && !Array.isArray(item)
   }
 }
+
+
+type RenameByT<T, U> = {
+  [K in keyof U as K extends keyof T
+    ? T[K] extends string
+      ? T[K]
+      : never
+    : K]: K extends keyof U ? U[K] : never;
+}
+
+/**
+ * 重命名对象的属性名字
+ * @param keysMap {string: string} 映射数组
+ * @param obj {object} obj
+ * @returns obj
+ * 
+ * @example
+ * ```
+ *    renameKeys({ name: 'name1', age: 'age1'} as const, {name: 'kdp', age: 12} as const)
+ * ```
+ */
+export const renameKeys =
+   <K extends Record<keyof V, string>, V extends object>(keysMap: K, obj: V) => 
+    (
+      Object.entries(obj).reduce(
+        // @ts-expect-error
+        (a, [k, v]) => k in keysMap ? {...a, [keysMap[k]]: v} : {...a, [k]: v},
+        {}
+      ) as RenameByT<K, V>
+    )
+
