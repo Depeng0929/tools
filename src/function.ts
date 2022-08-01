@@ -1,4 +1,4 @@
-import { isObject, isString } from './is'
+import { isNumberLike, isObject, isString } from './is'
 
 /**
  * Pass the value through the callback, and return the value
@@ -38,7 +38,7 @@ export function debug(val: unknown) {
   else if (isObject(val))
     console.dir(val)
 
-  else if (isString(val))
+  else if (isString(val) || isNumberLike(val))
     console.log(`%c ${val}`, 'color: green; font-weight: normal')
 
   else
