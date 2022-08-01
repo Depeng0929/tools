@@ -1,4 +1,4 @@
-import { Nullable, Arrayable } from './types'
+import type { Arrayable, Nullable } from './types'
 /**
  * Genrate a range array of numbers. The `stop` is exclusive
  */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { add, divide, subtract, multiply, sum, clamp, equal } from '../src/index'
+import { add, clamp, divide, equal, multiply, subtract, sum } from '../src/index'
 
 describe('math', () => {
   it('add', () => {

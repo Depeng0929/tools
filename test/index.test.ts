@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 describe('index', () => {
   it('a', () => {
-    // @ts-ignore
+    // @ts-expect-error
     expect('a' === 'b').toBeFalsy()
   })
 })

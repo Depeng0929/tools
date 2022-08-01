@@ -1,19 +1,19 @@
 import { describe, expect, it } from 'vitest'
 import {
-  isRegExp,
+  isBrowser,
+  isDate,
   isFunction,
-  isString,
+  isMap,
+  isNil,
+  isNull,
   isNumberLike,
   isObject,
-  isDate,
-  isSymbol,
+  isRegExp,
   isSet,
-  isMap,
-  isNull,
+  isString,
+  isSymbol,
   isUndefined,
-  isNil,
   notNil,
-  isBrowser,
 } from '../src/index'
 
 describe('is', () => {

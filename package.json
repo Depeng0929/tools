@@ -6,15 +6,14 @@
     "tools"
   ],
   "license": "MIT",
+  "author": "Depeng0929 <15365182986@163.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Depeng0929/tools.git"
   },
-  "author": "Depeng0929 <15365182986@163.com>",
-  "files": [
-    "dist",
-    "*.d.ts"
-  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -22,21 +21,23 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
   "sideEffects": false,
   "bugs": {
     "url": "https://github.com/Depeng0929/tools/issues"
   },
   "homepage": "https://github.com/Depeng0929/tools#readme",
-  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "npm run test",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "build": "rollup -c",
     "release": "zx ./scripts/release.mjs",
-    "ci:publish": "npm run build && zx ./scripts/publish.mjs"
+    "ci:publish": "npm run build && zx ./scripts/publish.mjs",
+    "lint": "eslint --fix . --ext .js,.ts"
   },
   "dependencies": {
     "big.js": "^6.2.1",
