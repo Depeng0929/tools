@@ -1,5 +1,6 @@
-import { notNil, isObject } from './is'
-import { DeepMerge } from './types'
+import { isObject, notNil } from './is'
+import type { DeepMerge } from './types'
+import { entries, fromEntries } from './vendor'
 
 /**
  * Map key/value pairs for an object, and construct a new one
@@ -27,8 +28,8 @@ import { DeepMerge } from './types'
  * ```
  */
 export function objectMap<K extends string, V, NK = K, NV = V>(obj: Record<K, V>, fn: (key: K, value: V) => [NK, NV] | undefined): Record<K, V> {
-  return Object.fromEntries(
-    Object.entries(obj)
+  return fromEntries(
+    entries(obj)
       .map(([k, v]) => fn(k as K, v as V))
       .filter(notNil),
   )
@@ -75,7 +76,6 @@ export function deepMerge<T extends object = object, S extends object = T>(targe
   }
 }
 
-
 type RenameByT<T, U> = {
   [K in keyof U as K extends keyof T
     ? T[K] extends string
@@ -89,19 +89,18 @@ type RenameByT<T, U> = {
  * @param keysMap {string: string} 映射数组
  * @param obj {object} obj
  * @returns obj
- * 
+ *
  * @example
  * ```
  *    renameKeys({ name: 'name1', age: 'age1'} as const, {name: 'kdp', age: 12} as const)
  * ```
  */
-export const renameKeys =
-   <K extends Record<keyof V, string>, V extends object>(keysMap: K, obj: V) => 
-    (
-      Object.entries(obj).reduce(
-        // @ts-expect-error
-        (a, [k, v]) => k in keysMap ? {...a, [keysMap[k]]: v} : {...a, [k]: v},
-        {}
-      ) as RenameByT<K, V>
-    )
-
+export const renameKeys
+   = <K extends Record<keyof V, string>, V extends object>(keysMap: K, obj: V) =>
+     (
+       Object.entries(obj).reduce(
+         // @ts-expect-error
+         (a, [k, v]) => k in keysMap ? { ...a, [keysMap[k]]: v } : { ...a, [k]: v },
+         {},
+       ) as RenameByT<K, V>
+     )

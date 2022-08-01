@@ -4,6 +4,7 @@
     "no-new-func": "off",
     "no-eval": "off",
     "no-console": "off",
-    "prefer-spread": "off"
+    "prefer-spread": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

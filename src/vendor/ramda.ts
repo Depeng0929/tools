@@ -1,4 +1,4 @@
-import { clone, equals, pipe, find, propEq, prop, map, pick as Rpick, isEmpty as RisEmpty } from 'rambda'
+import { isEmpty as RisEmpty, pick as Rpick, clone, equals, find, fromPairs, map, pipe, prop, propEq, toPairs } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -48,11 +48,11 @@ export function equal(a: unknown, b: unknown) {
  * ```
  */
 export function findValueByKey<T extends object>(keyName: keyof T, valueName: keyof T) {
-  // @ts-ignorer
+  // @ts-expect-errorr
   return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
-    // @ts-ignore
+    // @ts-expect-error
     find(propEq(keyName, key)),
-    // @ts-ignore
+    // @ts-expect-error
     prop(valueName),
   )(list)
 }
@@ -102,3 +102,6 @@ export function select<T extends object, U extends keyof T>(keys: Array<U>, arr:
  * ```
  */
 export const pick = Rpick
+
+export const entries = toPairs as typeof Object.entries
+export const fromEntries = fromPairs as typeof Object.fromEntries

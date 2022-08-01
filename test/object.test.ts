@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { objectMap, deepClone, deepMerge, renameKeys } from '../src/index'
+import { deepClone, deepMerge, objectMap, renameKeys } from '../src/index'
 
 describe('object', () => {
   it('objectMap', () => {
@@ -64,11 +64,11 @@ describe('deepMerge', () => {
 
 describe('other object methods', () => {
   it('renameKeys', () => {
-    const obj = renameKeys({ name: 'name1', age: 'age1'} as const, {name: 'kdp', age: 12} as const)
+    const obj = renameKeys({ name: 'name1', age: 'age1' } as const, { name: 'kdp', age: 12 } as const)
 
     expect(obj).toEqual({
       name1: 'kdp',
-      age1: 12
+      age1: 12,
     })
   })
 })
