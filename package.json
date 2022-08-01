@@ -39,32 +39,32 @@
     "ci:publish": "npm run build && zx ./scripts/publish.mjs"
   },
   "dependencies": {
-    "big.js": "^6.1.1",
-    "dayjs": "^1.10.8",
-    "debug": "^4.3.3",
+    "big.js": "^6.2.1",
+    "dayjs": "^1.11.4",
+    "debug": "^4.3.4",
     "p-limit": "^4.0.0",
-    "rambda": "^7.0.3",
-    "throttle-debounce": "^3.0.1"
+    "rambda": "^7.2.0",
+    "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
-    "@depeng9527/eslint-config": "^1.4.0",
+    "@depeng9527/eslint-config": "^1.4.3",
     "@rollup/plugin-alias": "^3.1.9",
-    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@types/big.js": "^6.1.3",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@types/big.js": "^6.1.5",
     "@types/debug": "^4.1.7",
-    "@types/throttle-debounce": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "bumpp": "^7.1.1",
-    "eslint": "7",
+    "@types/throttle-debounce": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "bumpp": "^8.2.1",
+    "eslint": "8.21.0",
     "rollup": "^2.77.2",
-    "rollup-plugin-dts": "^4.2.0",
-    "rollup-plugin-esbuild": "^4.8.2",
-    "typescript": "^4.5.4",
-    "vite": "^2.8.0",
-    "vitest": "^0.14.1",
-    "zx": "^5.2.0"
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-esbuild": "^4.9.1",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4",
+    "vitest": "^0.20.2",
+    "zx": "^7.0.7"
   }
 }
