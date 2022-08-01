@@ -1,4 +1,4 @@
-import { isEmpty as RisEmpty, pick as Rpick, clone, equals, find, fromPairs, map, pipe, prop, propEq, toPairs } from 'rambda'
+import { isEmpty as RisEmpty, pick as Rpick, clone, equals, find, fromPairs, map, pipe, prop, propEq } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
 
@@ -103,5 +103,15 @@ export function select<T extends object, U extends keyof T>(keys: Array<U>, arr:
  */
 export const pick = Rpick
 
-export const entries = toPairs as typeof Object.entries
+export const entries = rawEntries as typeof Object.entries
 export const fromEntries = fromPairs as typeof Object.fromEntries
+
+function rawEntries(obj: Record<string, any>) {
+  const ownProps = Object.keys(obj)
+  let i = ownProps.length
+  const resArray = new Array(i) // preallocate the Array
+  while (i--)
+    resArray[i] = [ownProps[i], obj[ownProps[i]]]
+
+  return resArray
+}

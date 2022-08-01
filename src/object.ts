@@ -98,7 +98,7 @@ type RenameByT<T, U> = {
 export const renameKeys
    = <K extends Record<keyof V, string>, V extends object>(keysMap: K, obj: V) =>
      (
-       Object.entries(obj).reduce(
+       entries(obj).reduce(
          // @ts-expect-error
          (a, [k, v]) => k in keysMap ? { ...a, [keysMap[k]]: v } : { ...a, [k]: v },
          {},
