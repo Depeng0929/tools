@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import alias from '@rollup/plugin-alias'
+import visualizer from "rollup-plugin-visualizer";
 
 const entries = [
   'src/index.ts',
@@ -23,6 +24,11 @@ const plugins = [
   esbuild({
     target: 'node14',
   }),
+  visualizer({
+    open: true,
+    gzipSize: true,
+    brotliSize: true,
+  })
 ]
 
 export default [

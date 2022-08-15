@@ -1,22 +1,26 @@
-import Big from 'big.js'
+import NP from 'number-precision'
 import type { numberLike } from '../index'
 
-export function add(a: numberLike, b: numberLike) {
-  return Big(a).plus(b).toNumber()
+export function add(...nums: numberLike[]) {
+  return NP.plus(...nums)
 }
 
-export function subtract(a: numberLike, b: numberLike) {
-  return Big(a).minus(b).toNumber()
+export function subtract(...nums: numberLike[]) {
+  return NP.minus(...nums)
 }
 
-export function multiply(a: numberLike, b: numberLike) {
-  return Big(a).times(b).toNumber()
+export function multiply(...nums: numberLike[]) {
+  return NP.times(...nums)
 }
 
-export function divide(a: numberLike, b: numberLike) {
-  return Big(a).div(b).toNumber()
+export function divide(...nums: numberLike[]) {
+  return NP.divide(...nums)
 }
 
 export function numberLikeEqual(a: numberLike, b: numberLike) {
-  return Big(a).eq(Big(b))
+  return NP.strip(a) === NP.strip(b)
+}
+
+export function toFixed(num: numberLike, bit: number) {
+  return NP.round(num, bit)
 }
