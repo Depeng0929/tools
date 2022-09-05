@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { at, findValueByKey, move, range, remove, select, uniq } from '../src/index'
+import { at, findValueByKey, move, range, remove, select, uniq, removeElement } from '../src/index'
 
 describe('array', () => {
   it('uniq', () => {
@@ -25,6 +25,12 @@ describe('array', () => {
     const arr = [1, 2, 3]
     expect(remove(arr, 2)).toBeTruthy()
     expect(remove(arr, 100)).toBeFalsy()
+  })
+
+  it('removeElement', () => {
+    const arr = [1, 2, 3]
+    expect(removeElement(2, arr)).toBeTruthy()
+    expect(removeElement(4, arr)).toBeFalsy()
   })
 
   it('move', () => {

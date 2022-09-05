@@ -81,6 +81,15 @@ export function remove<T>(array: T[], value: T) {
   return false
 }
 
+export function removeElement<T>(value: T, arr: Array<T>) {
+  const index = arr.indexOf(value)
+  if (index >= 0) {
+    arr.splice(index, 1)
+    return true
+  }
+  return false
+}
+
 export function move<T>(arr: T[], from: number, to: number) {
   arr.splice(to, 0, arr.splice(from, 1)[0])
   return arr

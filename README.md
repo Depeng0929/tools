@@ -66,6 +66,8 @@ import {
 
 * `remove`
 
+* `removeElement`
+
 * `move`
 *  `toArray`
 
