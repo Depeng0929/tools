@@ -1,5 +1,6 @@
 {
   "name": "@depeng9527/tools",
+  "type": "module",
   "version": "2.5.1",
   "description": "Personal tools",
   "keywords": [
