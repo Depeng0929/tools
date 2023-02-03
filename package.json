@@ -40,12 +40,14 @@
     "ci:publish": "npm run build && zx ./scripts/publish.mjs",
     "lint": "eslint --fix . --ext .js,.ts"
   },
+  "peerDependencies": {
+    "dayjs": ">=1.11.0",
+    "rambda": ">=7.0.0"
+  },
   "dependencies": {
-    "dayjs": "^1.11.4",
     "debug": "^4.3.4",
     "number-precision": "^1.5.2",
     "p-limit": "^4.0.0",
-    "rambda": "^7.2.0",
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
@@ -59,10 +61,13 @@
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "bumpp": "^8.2.1",
+    "dayjs": "^1.11.4",
     "eslint": "8.21.0",
+    "rambda": "^7.2.0",
     "rollup": "^2.77.2",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-esbuild": "^4.9.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-visualizer": "^5.7.1",
     "typescript": "^4.7.4",
     "vite": "^3.0.4",

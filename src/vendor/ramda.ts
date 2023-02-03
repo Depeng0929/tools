@@ -52,7 +52,6 @@ export function findValueByKey<T extends object>(keyName: keyof T, valueName: ke
   return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
     // @ts-expect-error
     find(propEq(keyName, key)),
-    // @ts-expect-error
     prop(valueName),
   )(list)
 }

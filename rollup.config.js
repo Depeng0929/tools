@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import alias from '@rollup/plugin-alias'
 import visualizer from "rollup-plugin-visualizer";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const entries = [
   'src/index.ts',
@@ -24,11 +25,12 @@ const plugins = [
   esbuild({
     target: 'node14',
   }),
-  visualizer({
-    open: true,
-    gzipSize: true,
-    brotliSize: true,
-  })
+  // visualizer({
+  //   open: true,
+  //   gzipSize: true,
+  //   brotliSize: true,
+  // }),
+  peerDepsExternal()
 ]
 
 export default [
