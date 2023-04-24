@@ -8,7 +8,7 @@ import visualizer from "rollup-plugin-visualizer";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const entries = [
-  'src/index.ts',
+  './src/index.ts',
 ]
 
 const plugins = [
@@ -52,7 +52,7 @@ export default [
   ...entries.map(input => ({
     input,
     output: {
-      file: input.replace('src/', 'dist/').replace('.ts', '.d.ts'),
+      file: input.replace('src/', '').replace('.ts', '.d.ts'),
       format: 'esm',
     },
     external: [],
