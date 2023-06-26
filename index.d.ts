@@ -190,8 +190,11 @@ declare function capitalize(str: string): string;
 
 declare const timeStamp: () => number;
 
-type FnWithParams = (...args: any[]) => any;
-declare function getSingle<T extends FnWithParams>(createInstance: T): (...args: Parameters<T>) => ReturnType<T>;
+/**
+ * Give a function, return a function.
+ * you can clear this closure by closureFunction = null
+ */
+declare function createSingle<T extends (...args: any[]) => any>(fn: T): (...args: Parameters<T>) => ReturnType<T>;
 
 // Type definitions for throttle-debounce 5.0
 
@@ -440,4 +443,4 @@ declare class PInstance<T = any> extends Promise<Awaited<T>[]> {
  */
 declare function p<T = any>(items?: Iterable<T>, options?: POptions): PInstance<T>;
 
-export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, debounce, debug, deepClone, deepMerge, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, getSingle, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };
+export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, createSingle, debounce, debug, deepClone, deepMerge, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };

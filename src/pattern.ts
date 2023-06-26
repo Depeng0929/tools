@@ -1,14 +1,14 @@
 import type { ReturnType } from './types'
 
-type FnWithParams = (...args: any[]) => any
-export function getSingle<T extends FnWithParams>(createInstance: T): (...args: Parameters<T>) => ReturnType<T> {
+/**
+ * Give a function, return a function.
+ * you can clear this closure by closureFunction = null
+ */
+export function createSingle<T extends (...args: any[]) => any>(fn: T) {
   let result: ReturnType<T>
 
-  return (...args) => {
-    if (result) { return result }
-    else {
-      // @ts-expect-error
-      return result = result = createInstance.apply(this, args)
-    }
+  return function (...args: Parameters<T>): ReturnType<T> {
+    // @ts-ignore this?
+    return result || (result = fn.apply(this, args))
   }
 }
