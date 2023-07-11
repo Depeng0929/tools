@@ -195,6 +195,15 @@ declare const timeStamp: () => number;
  * you can clear this closure by closureFunction = null
  */
 declare function createSingle<T extends (...args: any[]) => any>(fn: T): (...args: Parameters<T>) => ReturnType<T>;
+/**
+ * 创建一个对象池，create方法用于创建一个纯内部状态对象，必须使用额外方法赋予create的对象外部状态
+ * @param fn return object or class
+ * @returns create equal to fn excute, recover must excute in clear methods
+ */
+declare function createPool<T extends (...args: any[]) => any>(fn: T): {
+    create(...args: Parameters<T>): ReturnType<T>;
+    recover(item: ReturnType<T>): void;
+};
 
 // Type definitions for throttle-debounce 5.0
 
@@ -443,4 +452,4 @@ declare class PInstance<T = any> extends Promise<Awaited<T>[]> {
  */
 declare function p<T = any>(items?: Iterable<T>, options?: POptions): PInstance<T>;
 
-export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, createSingle, debounce, debug, deepClone, deepMerge, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };
+export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, createPool, createSingle, debounce, debug, deepClone, deepMerge, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };
