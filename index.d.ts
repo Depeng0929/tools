@@ -452,4 +452,70 @@ declare class PInstance<T = any> extends Promise<Awaited<T>[]> {
  */
 declare function p<T = any>(items?: Iterable<T>, options?: POptions): PInstance<T>;
 
-export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, createPool, createSingle, debounce, debug, deepClone, deepMerge, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };
+interface IBaseDef {
+    key: PropertyKey;
+    value: string | number;
+}
+type ToPropertyPrefix<N extends string = ''> = N extends '' ? '' : `${N}_`;
+type ToKeys<T> = T extends readonly [infer A, ...infer B] ? A extends {
+    readonly key: infer K;
+} ? B['length'] extends 0 ? [K] : [K, ...ToKeys<B>] : never : [];
+type ToValues<T> = T extends readonly [infer A, ...infer B] ? A extends {
+    readonly value: infer K;
+} ? B['length'] extends 0 ? [K] : [K, ...ToValues<B>] : never : [];
+type ToSingleKeyMap<T> = T extends {
+    readonly key: infer K;
+} ? K extends PropertyKey ? {
+    readonly [Key in K]: T;
+} : never : never;
+type MergeIntersection<A> = A extends infer T ? {
+    [Key in keyof T]: T[Key];
+} : never;
+type ToKeyMap<T> = T extends readonly [infer A, ...infer B] ? B['length'] extends 0 ? ToSingleKeyMap<A> : MergeIntersection<ToSingleKeyMap<A> & ToKeyMap<B>> : [];
+type ToSingleValueMap<T> = T extends {
+    readonly value: infer K;
+} ? K extends PropertyKey ? {
+    readonly [Key in K]: T;
+} : never : never;
+type ToValueMap<T> = T extends readonly [infer A, ...infer B] ? B['length'] extends 0 ? ToSingleValueMap<A> : MergeIntersection<ToSingleValueMap<A> & ToValueMap<B>> : [];
+type ToSingleKeyValue<T> = T extends {
+    readonly key: infer K;
+    readonly value: infer V;
+} ? K extends PropertyKey ? {
+    readonly [Key in K]: V;
+} : never : never;
+type ToKeyValue<T> = T extends readonly [infer A, ...infer B] ? B['length'] extends 0 ? ToSingleKeyValue<A> : MergeIntersection<ToSingleKeyValue<A> & ToKeyValue<B>> : [];
+type ToSingleValueKey<T> = T extends {
+    readonly key: infer K;
+    readonly value: infer V;
+} ? V extends PropertyKey ? {
+    readonly [Key in V]: K;
+} : never : never;
+type ToValueKey<T> = T extends readonly [infer A, ...infer B] ? B['length'] extends 0 ? ToSingleValueKey<A> : MergeIntersection<ToSingleValueKey<A> & ToValueKey<B>> : [];
+/**
+ * ```
+ * const {
+ *  MUSIC_TYPE_KV,
+ *  MUSIC_TYPE_MAP_BY_KEY,
+ *  MUSIC_TYPE_LIST
+ *} = defineConstants(
+ *  [
+ *    {
+ *      key: "POP",
+ *      value: 1,
+ *      name: "流行音乐"
+ *    },
+ *    {
+ *      key: "ROCK",
+ *      value: 2,
+ *      name: "摇滚音乐"
+ *    }
+ *    // ...
+ *  ] as const,
+ *  "MUSIC_TYPE"
+ *);
+ * ```
+ */
+declare function defineConstants<T extends readonly IBaseDef[], N extends string = ''>(defs: T, namespace?: N): MergeIntersection<{ [Key in `${ToPropertyPrefix<N>}KV`]: ToKeyValue<T>; } & { [Key_1 in `${ToPropertyPrefix<N>}VK`]: ToValueKey<T>; } & { [Key_2 in `${ToPropertyPrefix<N>}KEYS`]: ToKeys<T>; } & { [Key_3 in `${ToPropertyPrefix<N>}VALUES`]: ToValues<T>; } & { [Key_4 in `${ToPropertyPrefix<N>}MAP_BY_KEY`]: ToKeyMap<T>; } & { [Key_5 in `${ToPropertyPrefix<N>}MAP_BY_VALUE`]: ToValueMap<T>; } & { [Key_6 in `${ToPropertyPrefix<N>}MAP`]: ToKeyValue<T>; } & { [Key_7 in `${ToPropertyPrefix<N>}LIST`]: T; }>;
+
+export { Arrayable, DeepMerge, DeepPartial, Fn, Intersection, MergeInsertions, MergeIntersection, Nullable, ReturnType, add, assert, at, camelCase, capitalize, clamp, createPool, createSingle, debounce, debug, deepClone, deepMerge, defineConstants, divide, ensurePrefix, ensureSuffix, entries, equal, findValueByKey, formateTime, fromEntries, head, isBrowser, isDate, isEmpty, isFunction, isMap, isNil, isNull, isNumber, isNumberLike, isObject, isRegExp, isSet, isString, isSymbol, isUndefined, kebabCase, last, move, multiply, notNil, numberLike, numberLikeEqual, objectKeys, objectMap, p, pascalCase, pick, randomStr, range, remove, removeElement, renameKeys, select, sleep, subtract, sum, tap, throttle, timeStamp, toArray, toFixed, uniq };

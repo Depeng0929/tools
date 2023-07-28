@@ -19,7 +19,7 @@ export function createSingle<T extends (...args: any[]) => any>(fn: T) {
  * @returns create equal to fn excute, recover must excute in clear methods
  */
 export function createPool<T extends (...args: any[]) => any>(fn: T) {
-  const pool: Array<ReturnType<T>> = []
+  let pool: Array<ReturnType<T>> = []
 
   return {
     create(...args: Parameters<T>): ReturnType<T> {
@@ -27,6 +27,9 @@ export function createPool<T extends (...args: any[]) => any>(fn: T) {
     },
     recover(item: ReturnType<T>) {
       pool.push(item)
+    },
+    clear() {
+      pool = []
     }
   }
 }
