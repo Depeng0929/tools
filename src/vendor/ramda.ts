@@ -1,6 +1,7 @@
-import { isEmpty as RisEmpty, pick as Rpick, clone, equals, find, fromPairs, map, pipe, prop, propEq } from 'rambda'
+import { isEmpty as RisEmpty, pick as Rpick, clone, equals, find, fromPairs, map, pipe, prop, propSatisfies } from 'rambda'
 import { isNumberLike } from '../is'
 import { numberLikeEqual } from './math'
+
 
 /**
  * deepclone
@@ -51,7 +52,7 @@ export function findValueByKey<T extends object>(keyName: keyof T, valueName: ke
   // @ts-expect-errorr
   return (key: T[keyof T], list: T[]): T[keyof T] | undefined => pipe(
     // @ts-expect-error
-    find(propEq(keyName, key)),
+    find(propSatisfies(kv => equal(kv, key), keyName)),
     prop(valueName),
   )(list)
 }

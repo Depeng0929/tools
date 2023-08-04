@@ -39,12 +39,13 @@ describe('array', () => {
   })
 
   it('findValueByKey', () => {
-    const arr = [{ name: 'k', age: 12 }, { name: 'kdp', age: 13 }]
-    const arr2: Array<{ name: string; age: number }> = []
-    const find = findValueByKey('name', 'age')
-    expect(find('k', arr)).toBe(12)
-    expect(find('c', arr)).toBeUndefined()
-    expect(find('c', arr2)).toBeUndefined()
+    const arr = [{ id: 1, name: 'k1' }, { id: 2, name: 'k2' }]
+    const arr2: Array<{ id:  number; name: string }> = []
+    const find = findValueByKey('id', 'name')
+    expect(find(1, arr)).toBe('k1')
+    expect(find('1', arr)).toBe('k1')
+    expect(find(3, arr)).toBeUndefined()
+    expect(find('k1', arr2)).toBeUndefined()
   })
 
   it('select', () => {

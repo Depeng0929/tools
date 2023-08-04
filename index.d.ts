@@ -203,6 +203,7 @@ declare function createSingle<T extends (...args: any[]) => any>(fn: T): (...arg
 declare function createPool<T extends (...args: any[]) => any>(fn: T): {
     create(...args: Parameters<T>): ReturnType<T>;
     recover(item: ReturnType<T>): void;
+    clear(): void;
 };
 
 // Type definitions for throttle-debounce 5.0
